@@ -2,3 +2,4 @@
 	path = qemu
 	url = https://gitlab.com/qemu-project/qemu.git
 	shallow = true
+	ignore = all
