@@ -26,11 +26,7 @@ if ! grep -q "$MESON_LINE" "$MESON_FILE"; then
 fi
 
 # Create symbolic links to device files
-ln -sf $REPOSITORY_DIR/src/hw/$DEVICE_NAME/ $REPOSITORY_DIR/qemu/hw/misc/
-
-# Create symbolic link to the pciemu_hw.h include file
-# This will avoid changing the meson files to be able to find this include
-# ln -s $REPOSITORY_DIR/include/hw/pciemu_hw.h $REPOSITORY_DIR/src/hw/$DEVICE_NAME/pciemu_hw.h
+ln -sf $REPOSITORY_DIR/src/hw/misc/$DEVICE_NAME/ $REPOSITORY_DIR/qemu/hw/misc/
 
 cd qemu
 ./configure --target-list="x86_64-softmmu" --enable-debug
