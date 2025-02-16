@@ -1,8 +1,17 @@
+cd lspci-static-build
+docker build -t lspci-static-build .
+docker run --name lspci-static-build lspci-static-build
+docker cp lspci-static-build:/build/pciutils-master/lspci ./lspci
+docker rm lspci-static-build
+docker image rm lspci-static-build
+cd ..
+
 mkdir -p initramfs
 cd initramfs
 curl -O https://www.busybox.net/downloads/binaries/1.35.0-x86_64-linux-musl/busybox
 chmod +x busybox
-find busybox init.sh -print0 | cpio --null -H newc -o | gzip -9 > ../initramfs.gz
+mv ../lspci-static-build/lspci .
+find busybox lspci init.sh -print0 | cpio --null -H newc -o | gzip -9 > ../initramfs.gz
 cd ..
 
 # Steal Alpine's vmlinuz-virt kernel
