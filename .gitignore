@@ -1,6 +1,5 @@
-qemu
-alpine-virt-3.19.1-x86_64.iso
-initramfs/busybox
-initramfs/lspci
-initramfs.gz
-vmlinuz-virt
+src/linux/vmlinuz-virt
+src/linux/lspci
+src/linux/pcie_test.ko
+src/linux/busybox
+src/linux/initramfs.gz
